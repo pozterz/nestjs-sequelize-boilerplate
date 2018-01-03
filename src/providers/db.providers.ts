@@ -1,22 +1,20 @@
-import { createConnection } from 'typeorm'
-import { Constant } from '../config/constant'
+import { Sequelize } from 'sequelize-typescript';
 
 export const db = [
   {
-    provide: Constant.databaseRepo,
-    useFactory: async () => await createConnection({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'vixtorhunt',
-      logging: ["query", "error"],
-      logger: "file",
-      entities: [
-        __dirname + '/../**/*.model{.ts,.js}',
-      ],
-      synchronize: true,
-    }),
+    provide: 'SequelizeToken',
+    useFactory: async () => {
+      const sequelize = new Sequelize({
+        dialect: 'mysql',
+        host: 'localhost',
+        port: 3306,
+        username: 'root',
+        password: '',
+        database: 'prettydoll',
+      });
+      sequelize.addModels([]);
+      await sequelize.sync();
+      return sequelize;
+    },
   },
 ];
