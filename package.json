@@ -21,7 +21,7 @@
     "redis": "^2.7.1",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.0",
-    "sequelize": "^4.28.6",
+    "sequelize": "^6.1.0",
     "sequelize-typescript": "^0.6.2",
     "typescript": "^2.5.2"
   },
